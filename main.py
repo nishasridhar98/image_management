@@ -14,14 +14,22 @@ while True:
 		# Add code to convert images to black and white
 	if num == 3:
 		# Add code to blur the images
+		dest = input("Enter the full path to where you want to store the images: ")
+		for f in os.listdir("Images"):#listdir gives the list of files in that folder
+			if f.endswith('.jpg'):
+				im = Image.open("Images/"+ str(f))#to open a single image n bitmap format
+				filename, file_extn = os.path.splitext(f)#splitext splits the filename nd extension
+				im = im.filter(ImageFilter.BLUR)
+				im.save(f"{dest}/{filename}.jpg")
+
 	if num == 4:
 		# Add code to change the size of the images
-		size = (300,300)
-		for f in os.listdir("Images"):
-			if f.endswith(".jpg"):
-				im = Image.open("Images/"+ str(f))			#to open a single image in bitmap format
-				filename, file_extn = os.path.splitext(f)
+		dest = input("Enter the full path to where you want to store the images: ")
+		size = input("Enter the size: ")
+		for f in os.listdir("Images"):#listdir gives the list of files in that folder
+			if f.endswith('.jpg'):
+				im = Image.open("Images/"+ str(f))
+				filename, file_extn = os.path.splitext(f)#splitext splits the filename nd extension
 				im.thumbnail(size)
-				#im.show()		
-				print(filename)							#to show the edited image on screen
-				im.save(f"thumbnail_300/{filename}.png")		#to save it in a designated file
+		 		#im.save(f) #saves in the same folder
+				im.save(f"{dest}/{filename}.jpg")
