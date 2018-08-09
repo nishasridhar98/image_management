@@ -2,7 +2,6 @@ from PIL import Image, ImageFilter
 import os
 
 while True:
-	dest = input("Enter the full path to where you want to store the images: ")
 	print("1. Rotate Image /n 2. Convert Image to Black and White /n 3. Blur the Image /n 4. Change the size")
 	num = int(input("Enter the index number what you want to do: "))
 	# Open all the images present in the folder where images are stored
@@ -10,8 +9,30 @@ while True:
 	if num == 1:
 		x = input("Enter 'R' to rotate right or 'L' to rotate left: ")
 		# Add code to perform rotate operation and save the images
+		dest = input("Enter the full path to where you want to store the images: ")
+		for f in os.listdir("Images"):#listdir gives the list of files in that folder
+			if f.endswith('.jpg'):
+				im = Image.open("Images/"+ str(f))
+				filename, file_extn = os.path.splitext(f)#splitext splits the filename nd extension
+				if x == "R":
+					im=im.rotate(90)
+					im.save(f"{dest}/{filename}.jpg")
+				elif x == "L":
+					im = im.rotate(-90)
+					im.save(f"{dest}/{filename}.jpg")
+				else:
+					print("enter 'R' or 'L' ")
+
 	if num == 2:
 		# Add code to convert images to black and white
+		dest = input("Enter the full path to where you want to store the images: ")
+		for f in os.listdir("Images"):#listdir gives the list of files in that folder
+			if f.endswith('.jpg'):
+				im = Image.open("Images/"+ str(f))#y is str(f) used??
+				filename, file_extn = os.path.splitext(f)#splitext splits the filename nd extension
+				im=im.convert(mode='L')
+				im.save(f"{dest}/{filename}.jpg")
+
 	if num == 3:
 		# Add code to blur the images
 		dest = input("Enter the full path to where you want to store the images: ")
