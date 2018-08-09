@@ -9,6 +9,20 @@ while True:
 	if num == 1:
 		x = input("Enter 'R' to rotate right or 'L' to rotate left: ")
 		# Add code to perform rotate operation and save the images
+		dest = input("Enter the full path to where you want to store the images: ")
+		for f in os.listdir("Images"):#listdir gives the list of files in that folder
+			if f.endswith('.jpg'):
+				im = Image.open("Images/"+ str(f))
+				filename, file_extn = os.path.splitext(f)#splitext splits the filename nd extension
+				if x == "R":
+					im=im.rotate(90)
+					im.save(f"{dest}/{filename}.jpg")
+				elif x == "L":
+					im = im.rotate(-90)
+					im.save(f"{dest}/{filename}.jpg")
+				else:
+					print("enter 'R' or 'L' ")
+
 	if num == 2:
 		# Add code to convert images to black and white
 		dest = input("Enter the full path to where you want to store the images: ")
