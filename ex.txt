@@ -1,1 +1,0 @@
-To check whether merging of a particular path works
