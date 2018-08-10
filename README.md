@@ -1,4 +1,4 @@
-Renaming Folder Application & Image Manipulation Application
+Renaming Folder Application & Image Manipulation Application.
   Rename Folder application is built using Tkinter. This applications lets the user to rename all the images in a folder.
 
  Image Manipulation application is built using Pillow. This application lets the user perform the following:
